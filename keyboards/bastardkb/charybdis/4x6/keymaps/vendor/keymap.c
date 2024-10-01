@@ -131,9 +131,7 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
         }
         auto_pointer_layer_timer = timer_read();
     }
-    // flip the mouse movement direction
-    mouse_report.x = -mouse_report.x;
-    mouse_report.y = -mouse_report.y;
+
     return mouse_report;
 }
 
