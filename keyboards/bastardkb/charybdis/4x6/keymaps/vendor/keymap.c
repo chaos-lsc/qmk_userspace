@@ -122,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
     mouse_report.x = -mouse_report.x;
     mouse_report.y = -mouse_report.y;
-    return mouse_report;
+    return pointing_device_task_user(mouse_report);
 }
 #    ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
