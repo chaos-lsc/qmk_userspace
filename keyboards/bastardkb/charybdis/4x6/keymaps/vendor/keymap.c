@@ -122,11 +122,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // clang-format on
 
 #ifdef POINTING_DEVICE_ENABLE
-report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
-    mouse_report.x = -mouse_report.x;
-    mouse_report.y = -mouse_report.y;
-    return pointing_device_task_user(mouse_report);
-}
 #    ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
     if (abs(mouse_report.x) > CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD || abs(mouse_report.y) > CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD) {
@@ -139,6 +134,8 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
         }
         auto_pointer_layer_timer = timer_read();
     }
+    mouse_report.x = -mouse_report.x;
+    mouse_report.y = -mouse_report.y;
     return mouse_report;
 }
 
